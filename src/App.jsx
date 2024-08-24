@@ -56,6 +56,12 @@ function App() {
     }
   }
 
+  const getIcon = () => {
+    if(data.weather[0].main === "Clear"){
+      return sunny;
+    }
+  }
+
   const toggleDarkMode = () => {
     document.querySelector("body").setAttribute('data-theme' , 'dark');
     document.querySelector(".dark-icon").style.display = "none";
@@ -103,6 +109,9 @@ function App() {
                 </div>
                 <div>
                   <span className="location-temp" style={{color: getColor()}}>{Math.ceil(data.main.temp -  273.15)} °C</span>
+                  <div>
+                    <img src={getIcon()} alt="" className="weather-icon"/>
+                  </div>
                   {/*data.weather ? <h1>{data.weather[0].main}</h1> : null*/}
                 </div>
                 <div>
@@ -114,6 +123,9 @@ function App() {
                     {locationTime}
                   </span>
                 </div>
+              </div>
+              <div className="highlights">
+                
               </div>
             </div>
           ) : (null)
